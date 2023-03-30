@@ -170,6 +170,6 @@ public class MonedaTemperatura {
     //y muestra un cuadro de diálogo con el resultado de la conversión
     private void calculoValorTemperatura(double temperatura, String temperaturaA, String temperaturaB){                       
         temperatura = (double) Math.round(temperatura * 100d) / 100;
-        JOptionPane.showMessageDialog(null, + ingresoTemperatura + " " + temperaturaA + " son " + temperatura + " " + temperaturaB,"Message",JOptionPane.INFORMATION_MESSAGE);       
+        JOptionPane.showMessageDialog(null, ingresoTemperatura + " " + temperaturaA + " son " + temperatura + " " + temperaturaB,"Message",JOptionPane.INFORMATION_MESSAGE);       
     }    
 }
