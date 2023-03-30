@@ -28,7 +28,7 @@ public class MonedaTemperatura {
     private void valorConvertir(){    
         try {
             if(opcion.equals("Conversor de Moneda")){
-                ingresoMoneda = Double.parseDouble(JOptionPane.showInputDialog(null,"Ingresa la cantidad de dinero que deseas convertir", "Input",JOptionPane.QUESTION_MESSAGE));                            
+                ingresoMoneda = Double.parseDouble(JOptionPane.showInputDialog(null,"Ingresa la cantidad de dinero que deseas convertir:", "Input",JOptionPane.QUESTION_MESSAGE));                            
                 menuOpcionesMoneda();                
             }else if(opcion.equals("Conversor de Temperatura")){
                 ingresoTemperatura = Double.parseDouble(JOptionPane.showInputDialog(null,"Ingresa el valor de la temperatura que deseas convertir", "Input",JOptionPane.QUESTION_MESSAGE));                     
@@ -108,13 +108,13 @@ public class MonedaTemperatura {
     
     //Cuadro de diálogo para escoger si se desea continuar o salir del programa
     private void confirmacion(){        
-        int i = JOptionPane.showConfirmDialog(null, "¿Desea continuar?", "Select an Option",JOptionPane.INFORMATION_MESSAGE);                    
-        if(i == 0){
+        int respuesta = JOptionPane.showConfirmDialog(null, "¿Desea continuar?", "Select an Option",JOptionPane.INFORMATION_MESSAGE);                    
+        if(respuesta == 0){
             menuMonedaTemperaura();
-        }else if(i == 1){
-            JOptionPane.showMessageDialog(null, "Gracias, hasta pronto!!!");  
+        }else if(respuesta == 1){
+            JOptionPane.showMessageDialog(null, "Programa terminado");  
         }else{
-            JOptionPane.showMessageDialog(null, "Gracias, hasta pronto!!!");  
+            JOptionPane.showMessageDialog(null, "Programa terminado");  
         }
     }
      
@@ -138,29 +138,29 @@ public class MonedaTemperatura {
         switch(menuCambio){            
             case "Grados Celsius a Grados Fahrenheit":               
                 fahrenheit = (ingresoTemperatura * 1.8) + 32; 
-                calculoValorTemperatura(fahrenheit);
+                calculoValorTemperatura(fahrenheit, "Grados Celsius", "Grados Fahrenheit");
                 break;                
             case "Grados Celsius a Kelvin":
                 kelvin = ingresoTemperatura + 273;
-                calculoValorTemperatura(kelvin);
+                calculoValorTemperatura(kelvin, "Grados Celsius", "Grados Kelvin");
                 break;                
             case "Grados Fahrenheit a Grados Celsius":
                 celsius = (ingresoTemperatura - 32) / 1.8;
-                calculoValorTemperatura(celsius);
+                calculoValorTemperatura(celsius, "Grados Fahrenheit", "Grados Celsius");
                 break;            
             case "Grados Fahrenheit a kelvin":
                 celsius = (ingresoTemperatura - 32) / 1.8;                
                 kelvin = celsius + 273;
-                calculoValorTemperatura(kelvin);
+                calculoValorTemperatura(kelvin, "Grados Fahrenheit", "Kelvin");
                 break;                
             case "Kelvin a Grados Celsius":
                 celsius = ingresoTemperatura - 273;
-                calculoValorTemperatura(celsius);
+                calculoValorTemperatura(celsius, "Kelvin", "Grados Celsius");
                 break;                
             case "Kelvin a Grados Fahrenheit":
                 celsius = ingresoTemperatura - 273;
                 fahrenheit = (celsius * 1.8) + 32;
-                calculoValorTemperatura(fahrenheit);
+                calculoValorTemperatura(fahrenheit, "Kelvin", "Grados Fahrenheit");
                 break;            
         }
     }
@@ -168,8 +168,8 @@ public class MonedaTemperatura {
     
     //Método que realiza el redondeo del valor de temperatura
     //y muestra un cuadro de diálogo con el resultado de la conversión
-    private void calculoValorTemperatura(double temperatura){                       
+    private void calculoValorTemperatura(double temperatura, String temperaturaA, String temperaturaB){                       
         temperatura = (double) Math.round(temperatura * 100d) / 100;
-        JOptionPane.showMessageDialog(null, ingresoTemperatura + " " + menuCambio + " son: " + temperatura,"Message",JOptionPane.INFORMATION_MESSAGE);       
+        JOptionPane.showMessageDialog(null, + ingresoTemperatura + " " + temperaturaA + " son " + temperatura + " " + temperaturaB,"Message",JOptionPane.INFORMATION_MESSAGE);       
     }    
 }
